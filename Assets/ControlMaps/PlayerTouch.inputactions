@@ -1,0 +1,34 @@
+{
+    "name": "TouchScreen",
+    "maps": [
+        {
+            "name": "TouchScreen",
+            "id": "f2f63ab5-3940-46e9-ab3f-0ca029329adb",
+            "actions": [
+                {
+                    "name": "TouchScreen",
+                    "type": "PassThrough",
+                    "id": "fba79ad4-1788-4a8c-827d-974c0e4aec12",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8be522cd-dc62-4912-bcbf-1d011523292c",
+                    "path": "<Touchscreen>/touch0/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
