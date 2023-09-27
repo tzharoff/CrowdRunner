@@ -3363,7 +3363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654322094}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22619948, y: 0.000000018738705, z: -0.0000000043514703, w: 0.97408104}
+  m_LocalRotation: {x: 0.22619948, y: -0.000000018738707, z: 0.0000000043514707, w: 0.97408104}
   m_LocalPosition: {x: -0.07872528, y: 12.742967, z: -17.865734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3497,7 +3497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22619948, y: 0.000000018738705, z: -0.0000000043514703, w: 0.97408104}
+  m_LocalRotation: {x: 0.22619948, y: -0.000000018738707, z: 0.0000000043514707, w: 0.97408104}
   m_LocalPosition: {x: -0.07872528, y: 12.742967, z: -17.865734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3792,6 +3792,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e73aee04c32ca4e1294cf31db322cf38, type: 3}
+--- !u!1 &1815445735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815445736}
+  m_Layer: 0
+  m_Name: Haptics Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1815445736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815445735}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0174205, y: 3.2899952, z: 10.135151}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1832044381
 GameObject:
   m_ObjectHideFlags: 0
@@ -4662,3 +4693,4 @@ SceneRoots:
   - {fileID: 2044522783}
   - {fileID: 1866374664}
   - {fileID: 365605171}
+  - {fileID: 1815445736}
