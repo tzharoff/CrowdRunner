@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyState enemyState;
     [SerializeField] private Transform targetRunner;
 
+    public static Action OnRunnerDie;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +81,8 @@ public class Enemy : MonoBehaviour
 
         if(Vector3.Distance(transform.position, targetRunner.position) < killRange)
         {
-            Debug.Log($"{targetRunner.name} is killed by {gameObject.name}");
+            OnRunnerDie?.Invoke();
+            //Debug.Log($"{targetRunner.name} is killed by {gameObject.name}");
             targetRunner.SetParent(null);
             Destroy(targetRunner.gameObject);
             transform.SetParent(null);

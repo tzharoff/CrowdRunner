@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 /// <summary>
 /// Handles Player Door and Finish Line interactions
@@ -11,6 +12,8 @@ public class PlayerDetection : MonoBehaviour
 {
     [Header("Elements")]
     [SerializeField] private CrowdSystem crowdSystem;
+
+    public static Action onDoorsHit;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,7 @@ public class PlayerDetection : MonoBehaviour
                 door.DisableCollision();
                 BonusType bonusType = door.GetBonusType(transform.position.x);
                 int bonusAmount = door.GetBonus(transform.position.x);
+                onDoorsHit?.Invoke();
                 crowdSystem.ApplyBonus(bonusType, bonusAmount);
             }
 
