@@ -6,11 +6,13 @@ public class EnemyGroup : MonoBehaviour
 {
     [Header("Elements")]
     [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private Transform enemiesParent;
 
     [Header("Settings")]
     [SerializeField] private int enemyCount;
     [SerializeField] private float radius;
     [SerializeField] private float angle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,8 @@ public class EnemyGroup : MonoBehaviour
         {
             Vector3 enemyLocalPosition = GetRunnerLocalPosition(i);
             Vector3 enemyWorldPosition = transform.TransformPoint(enemyLocalPosition);
-            Instantiate(enemyPrefab, enemyWorldPosition, Quaternion.identity, transform);
+            Enemy enemy = Instantiate(enemyPrefab, enemyWorldPosition, Quaternion.identity, enemiesParent);
+            enemy.gameObject.name = $"Enemy {i}";
         }
     }
 

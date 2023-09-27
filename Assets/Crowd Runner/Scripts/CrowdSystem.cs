@@ -24,13 +24,22 @@ public class CrowdSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.instance.IsGameState())
+        {
+            return;
+        }
+
         PlaceRunners();
+
+        if(runnersParent.childCount <= 0)
+        {
+            GameManager.instance.SetGameState(GameManager.GameState.GameOver);
+        }
     }
 
     private void PlaceRunners()
     {
-        CrowdCounter.instance.CrowdCount = runnersParent.childCount;
-        for (int i = 0; i < CrowdCounter.instance.CrowdCount; i++)
+        for (int i = 0; i < runnersParent.childCount; i++)
         {
             Vector3 childLocalPosition = GetRunnerLocalPosition(i);
             runnersParent.GetChild(i).localPosition = childLocalPosition;
@@ -47,7 +56,7 @@ public class CrowdSystem : MonoBehaviour
 
     public float GetRadius()
     {
-        return radius * Mathf.Sqrt(CrowdCounter.instance.CrowdCount);
+        return radius * Mathf.Sqrt(runnersParent.childCount);
     }
 
     public void ApplyBonus(BonusType bonusType, int bonusAmount) {
@@ -60,11 +69,11 @@ public class CrowdSystem : MonoBehaviour
                 RemoveRunners(bonusAmount);
                 break;
             case BonusType.Multiplication:
-                int amountMultiplication = (CrowdCounter.instance.CrowdCount * bonusAmount) - CrowdCounter.instance.CrowdCount;
+                int amountMultiplication = (runnersParent.childCount * bonusAmount) - runnersParent.childCount;
                 AddRunners(amountMultiplication);
                 break;
             case BonusType.Division:
-                int amountDivision = CrowdCounter.instance.CrowdCount - (CrowdCounter.instance.CrowdCount / bonusAmount);
+                int amountDivision = runnersParent.childCount - (runnersParent.childCount / bonusAmount);
                 RemoveRunners(amountDivision);
                 break;
         }
@@ -81,12 +90,12 @@ public class CrowdSystem : MonoBehaviour
 
     public void RemoveRunners(int amount)
     {
-        if(amount > CrowdCounter.instance.CrowdCount)
+        if(amount > runnersParent.childCount)
         {
-            amount = CrowdCounter.instance.CrowdCount;
+            amount = runnersParent.childCount;
         }
 
-        for (int i = CrowdCounter.instance.CrowdCount - 1; i >= CrowdCounter.instance.CrowdCount - amount; i--)
+        for (int i = runnersParent.childCount - 1; i >= runnersParent.childCount - amount; i--)
         {
             Transform runnerToDestroy = runnersParent.GetChild(i);
             runnerToDestroy.SetParent(null);

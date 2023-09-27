@@ -5,35 +5,19 @@ using TMPro;
 
 public class CrowdCounter : MonoBehaviour
 {
-    public static CrowdCounter instance;
+    //public static CrowdCounter instance;
 
     [Header("Elements")]
     [SerializeField] private TextMeshPro crowdCounterText;
+    [SerializeField] private Transform runnersParent;
 
-    private int _crowdCount;
-
-    private void Awake()
+    private void Update()
     {
-        if(instance == null)
+        crowdCounterText.text = runnersParent.childCount.ToString();
+
+        if(runnersParent.childCount <= 0)
         {
-            instance = this;
-        } else
-        {
-            if(instance != this)
-            {
-                Destroy(this);
-            }
+            Destroy(gameObject);
         }
-    }
-
-    public int CrowdCount
-    {
-        get { return _crowdCount; }
-        set { _crowdCount = value; SetText(value); }
-    }
-
-    private void SetText(int crowdCount)
-    {
-        crowdCounterText.text = crowdCount.ToString();
     }
 }

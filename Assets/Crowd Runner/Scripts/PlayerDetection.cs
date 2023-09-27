@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Handles Player Door and Finish Line interactions
+/// </summary>
+
 public class PlayerDetection : MonoBehaviour
 {
     [Header("Elements")]
@@ -36,8 +40,12 @@ public class PlayerDetection : MonoBehaviour
             if (colliders[i].CompareTag("Finish"))
             {
                 //Debug.Log("Finish Line");
-                PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                int currentLevel = PlayerPrefs.GetInt("Level");
+                currentLevel++;
+                PlayerPrefs.SetInt("Level", currentLevel);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                GameManager.instance.SetGameState(GameManager.GameState.LevelComplete);
+                colliders[i].gameObject.SetActive(false);
             }
         }
     }

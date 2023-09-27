@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float searchRadius;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float killRange = 0.1f;
-    private EnemyState enemyState;
+    [SerializeField] private EnemyState enemyState;
     [SerializeField] private Transform targetRunner;
 
     // Start is called before the first frame update
@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, searchRadius);
         for (int i = 0; i < colliders.Length; i++)
         {
+            //Debug.Log($"number of colliders seen: {colliders.Length}");
             if (colliders[i].TryGetComponent(out Runner runner))
             {
                 if (runner.IsTarget())
@@ -52,10 +53,11 @@ public class Enemy : MonoBehaviour
                     continue;
                 }
 
-                runner.SetTarget();
+                runner.SetTarget(gameObject);
                 targetRunner = runner.transform;
 
                 StartRunningTowardsTarget();
+                break;
             }
         }
     }
@@ -77,6 +79,7 @@ public class Enemy : MonoBehaviour
 
         if(Vector3.Distance(transform.position, targetRunner.position) < killRange)
         {
+            Debug.Log($"{targetRunner.name} is killed by {gameObject.name}");
             targetRunner.SetParent(null);
             Destroy(targetRunner.gameObject);
             transform.SetParent(null);

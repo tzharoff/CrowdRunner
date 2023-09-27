@@ -53,9 +53,19 @@ public class PlayerController : MonoBehaviour
 
     private void GameStateChangedCalled(GameManager.GameState state)
     {
-        if(state == GameManager.GameState.Game)
+        switch (state)
         {
-            MoveEnable();
+            case GameManager.GameState.Menu:
+                break;
+            case GameManager.GameState.Game:
+                MoveEnable();
+                break;
+            case GameManager.GameState.LevelComplete:
+                MoveDisable();
+                break;
+            case GameManager.GameState.GameOver:
+                MoveDisable();
+                break;
         }
     }
 

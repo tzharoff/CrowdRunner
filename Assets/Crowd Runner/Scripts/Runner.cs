@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Runner : MonoBehaviour
 {
-    private bool isTarget;
-
+    [Description("Is the Runner targeted?")]
+    [SerializeField] private bool isTarget;
+    [SerializeField] private GameObject targetedBy;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,12 @@ public class Runner : MonoBehaviour
 
     public void SetTarget()
     {
+        isTarget = true;
+    }
+    public void SetTarget(GameObject targeter)
+    {
+        Debug.Log($"{gameObject.name} is targeted by {targeter.name}");
+        targetedBy = targeter;
         isTarget = true;
     }
 
