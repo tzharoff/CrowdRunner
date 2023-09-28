@@ -74,6 +74,7 @@ public class CrowdSystem : MonoBehaviour
                 break;
             case BonusType.Division:
                 int amountDivision = runnersParent.childCount - (runnersParent.childCount / bonusAmount);
+                Debug.Log($"Runners Removed from Division: {amountDivision}");
                 RemoveRunners(amountDivision);
                 break;
         }
@@ -95,8 +96,12 @@ public class CrowdSystem : MonoBehaviour
             amount = runnersParent.childCount;
         }
 
-        for (int i = runnersParent.childCount - 1; i >= runnersParent.childCount - amount; i--)
+        int childCount = runnersParent.childCount;
+
+        for (int i = childCount - 1; i >= childCount - amount; i--)
         {
+            Debug.Log($"i={i}, runnersParent.childCount-amount={childCount - amount}");
+
             Transform runnerToDestroy = runnersParent.GetChild(i);
             runnerToDestroy.SetParent(null);
             Destroy(runnerToDestroy.gameObject);

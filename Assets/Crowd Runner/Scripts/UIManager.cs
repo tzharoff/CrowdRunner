@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject levelCompletePanel;
+    [SerializeField] private GameObject settingsPanel;
 
     [Header("Elements")]
     [SerializeField] private Slider progressBar;
@@ -84,6 +85,7 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(false);
         levelCompletePanel.SetActive(false);
         gameOverPanel.SetActive(false);
+        settingsPanel.SetActive(false);
     }
 
     public void ShowGame()
@@ -92,6 +94,7 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(true);
         levelCompletePanel.SetActive(false);
         gameOverPanel.SetActive(false);
+        settingsPanel.SetActive(false);
     }
 
     public void ShowGameOver()
@@ -100,6 +103,7 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(false);
         levelCompletePanel.SetActive(false);
         gameOverPanel.SetActive(true);
+        settingsPanel.SetActive(false);
     }
 
     public void ShowLevelComplete()
@@ -108,6 +112,21 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(false);
         gameOverPanel.SetActive(false);
         levelCompletePanel.SetActive(true);
+        settingsPanel.SetActive(false);
+    }
+
+    public void ShowSettingsPannel()
+    {
+        menuPanel.SetActive(false);
+        gamePanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        levelCompletePanel.SetActive(false);
+        settingsPanel.SetActive(true);
+    }
+
+    public void HideSettingsPanel()
+    {
+        settingsPanel.SetActive(false);
     }
 
     public void UpdateProgressBar()
@@ -120,4 +139,6 @@ public class UIManager : MonoBehaviour
         progressBar.value = progress;
 
     }
+
+
 }
