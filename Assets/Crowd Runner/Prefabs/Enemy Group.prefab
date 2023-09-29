@@ -131,6 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crowdCounterText: {fileID: 3243888172219351219}
   runnersParent: {fileID: 8106885736963705691}
+  bubbleSprite: {fileID: 556102330954875661}
+  textMesh: {fileID: 5842818687951167719}
 --- !u!1 &3811988180632383524
 GameObject:
   m_ObjectHideFlags: 0

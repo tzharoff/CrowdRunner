@@ -29,7 +29,8 @@ public class PlayerDetection : MonoBehaviour
 
     private void DetectDoors()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 1f);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, crowdSystem.GetRadius());
+
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].TryGetComponent(out Doors door))
@@ -50,6 +51,12 @@ public class PlayerDetection : MonoBehaviour
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 GameManager.instance.SetGameState(GameManager.GameState.LevelComplete);
                 colliders[i].gameObject.SetActive(false);
+            }
+
+            if (colliders[i].CompareTag("Coin"))
+            {
+                Destroy(colliders[i].gameObject);
+                DataManager.instance.AddCoins(1);
             }
         }
     }
