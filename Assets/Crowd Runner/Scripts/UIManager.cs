@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject levelCompletePanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject shopPanel;
 
     [Header("Elements")]
     [SerializeField] private Slider progressBar;
@@ -32,7 +33,12 @@ public class UIManager : MonoBehaviour
     {
         progressBar.value = 0;
 
+        //when making builds for play
         ShowMenuPanel();
+
+        //for debugging panels
+        //ShowShopPanel();
+
 
         levelText.text = $"Level {ChunkManager.instance.GetLevel}";
 
@@ -72,6 +78,7 @@ public class UIManager : MonoBehaviour
         GameManager.instance.SetGameState(GameManager.GameState.Game);
         gamePanel.SetActive(true);
         menuPanel.SetActive(false);
+        shopPanel.SetActive(false);
     }
 
     public void RetryButtonPressed()
@@ -86,6 +93,7 @@ public class UIManager : MonoBehaviour
         levelCompletePanel.SetActive(false);
         gameOverPanel.SetActive(false);
         settingsPanel.SetActive(false);
+        shopPanel.SetActive(false);
     }
 
     public void ShowGame()
@@ -95,6 +103,7 @@ public class UIManager : MonoBehaviour
         levelCompletePanel.SetActive(false);
         gameOverPanel.SetActive(false);
         settingsPanel.SetActive(false);
+        shopPanel.SetActive(false);
     }
 
     public void ShowGameOver()
@@ -104,6 +113,7 @@ public class UIManager : MonoBehaviour
         levelCompletePanel.SetActive(false);
         gameOverPanel.SetActive(true);
         settingsPanel.SetActive(false);
+        shopPanel.SetActive(false);
     }
 
     public void ShowLevelComplete()
@@ -113,6 +123,7 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         levelCompletePanel.SetActive(true);
         settingsPanel.SetActive(false);
+        shopPanel.SetActive(false);
     }
 
     public void ShowSettingsPannel()
@@ -122,6 +133,17 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         levelCompletePanel.SetActive(false);
         settingsPanel.SetActive(true);
+        shopPanel.SetActive(false);
+    }
+
+    public void ShowShopPanel()
+    {
+        menuPanel.SetActive(false);
+        gamePanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        levelCompletePanel.SetActive(false);
+        settingsPanel.SetActive(false);
+        shopPanel.SetActive(true);
     }
 
     public void HideSettingsPanel()
