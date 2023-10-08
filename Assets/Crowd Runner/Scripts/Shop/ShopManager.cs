@@ -29,6 +29,7 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        RewardedAdButton.onRewardGranted += OnRewardGrantedCallback;
         Debug.Log("Player prefs cleared in ShopManager.cs");
         PlayerPrefs.DeleteAll();
 
@@ -48,6 +49,15 @@ public class ShopManager : MonoBehaviour
     private void OnDisable()
     {
         DataManager.CoinsUpdate -= UpdatePurchaseButton;
+        RewardedAdButton.onRewardGranted -= OnRewardGrantedCallback;
+    }
+
+    private void OnRewardGrantedCallback()
+    {
+        int saveSkinPrice = skinPrice;
+        skinPrice = 0;
+        PurchaseSkin();
+        skinPrice = saveSkinPrice;
     }
 
     private void ConfigureButtons()
