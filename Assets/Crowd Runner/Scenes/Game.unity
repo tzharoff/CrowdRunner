@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 2580260}
   - component: {fileID: 2580262}
   - component: {fileID: 2580261}
+  - component: {fileID: 2580263}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -399,6 +400,21 @@ MonoBehaviour:
   _androidGameId: 5436898
   _iOSGameId: 5436899
   _testMode: 1
+--- !u!114 &2580263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2580259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698119297a6e74bc38c54eae5cfdb129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showAdButton: {fileID: 1523889831}
+  _androidAdUnitId: Rewarded_Android
+  _iOSAdUnitId: Rewarded_iOS
 --- !u!1 &16511472
 GameObject:
   m_ObjectHideFlags: 0
