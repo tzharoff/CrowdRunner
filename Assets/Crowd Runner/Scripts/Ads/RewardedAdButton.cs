@@ -32,7 +32,7 @@ public class RewardedAdButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsS
 
     private void Start()
     {
-        if (FindAnyObjectByType<AdsInitializer>().isLoaded)
+        if (FindAnyObjectByType<AdsInitializer>().IsLoaded())
         {
             LoadAd();
         }

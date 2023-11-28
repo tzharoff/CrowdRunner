@@ -61,7 +61,7 @@ public class ChunkManager : MonoBehaviour
     private void GenerateLevel()
     {
         int currentLevel = GetLevel;
-
+        Debug.Log($"current level = {currentLevel}");
         currentLevel = currentLevel % levels.Length;
 
         LevelSO level = levels[currentLevel];
